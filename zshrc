@@ -101,7 +101,7 @@ alias upgradebrew='brew update; brew upgrade'
 # this command should be disabled, you can upgrade applications when you open it, this is more safe.
 alias upgradebrewcask="brew cask outdated | awk '{print $1}' | xargs brew cask install --force"
 
-alias emacs="/usr/local/Cellar/emacs/26.1_1/Emacs.app/Contents/MacOS/Emacs -nw"
+alias emacs="$(brew --prefix emacs)/Emacs.app/Contents/MacOS/Emacs -nw"
 
 #eval "$(thefuck --alias)"
 
@@ -144,4 +144,9 @@ export HOMEBREW_NO_GITHUB_API=1
 export PATH="$PATH:/Applications/VMware\ Fusion.app/Contents/Library"
 
 # go
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export PATH=$PATH:$(brew --prefix go)/libexec/bin
+
+# tomcat
+CATALINA_HOME="$(brew --prefix tomcat)/libexec"
+CATALINA_BASE=$CATALINA_HOME
+
