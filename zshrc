@@ -115,7 +115,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # PATH config for locally installed pip packages
 #export PATH="$HOME/Library/Python/2.7/bin/:$PATH"
-#export PATH="$HOME/Library/Python/3.6/bin/:$PATH"
+export PATH="$HOME/Library/Python/3.7/bin/:$PATH"
 #export PATH="$HOME/.local/bin/:$PATH"
 
 # PATH config for locally installed npm packages
