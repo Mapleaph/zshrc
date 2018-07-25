@@ -105,7 +105,8 @@ alias emacs="$(brew --prefix emacs)/Emacs.app/Contents/MacOS/Emacs -nw"
 
 #eval "$(thefuck --alias)"
 
-archey
+# disable ip address check to avoid timeout
+archey -o
 
 # PATH for /usr/local/bin
 export PATH="/usr/local/bin:$PATH"
