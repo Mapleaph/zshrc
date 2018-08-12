@@ -120,14 +120,14 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$HOME/Library/Python/3.7/bin/:$PATH"
 #export PATH="$HOME/.local/bin/:$PATH"
 
-# PATH config for locally installed npm packages
-export PATH="$(npm get prefix)/bin/:$PATH"
-
 # Configuration for Node Version Manager (NVM)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# PATH config for locally installed npm packages
+export PATH="$(npm get prefix)/bin/:$PATH"
+#
 # PATH config for anaconda
 #export PATH="$HOME/anaconda3/bin/:$PATH"
 
