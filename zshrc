@@ -94,7 +94,8 @@ alias ls='ls -FG'
 alias tail='tail -f'
 alias make='make -w'
 
-alias ep='export http_proxy=socks5://127.0.0.1:8887;export https_proxy=socks5://127.0.0.1:8887'
+alias hp='export http_proxy=http://127.0.0.1:8888;export https_proxy=http://127.0.0.1:8888'
+alias sp='export http_proxy=socks5://127.0.0.1:8887;export https_proxy=socks5://127.0.0.1:8887'
 alias dp='unset http_proxy; unset https_proxy'
 
 alias upgradebrew='brew update; brew upgrade'
@@ -120,7 +121,7 @@ export PATH="$HOME/Library/Python/3.7/bin/:$PATH"
 #export PATH="$HOME/.local/bin/:$PATH"
 
 # PATH config for locally installed npm packages
-#export PATH="$HOME/node_modules/.bin/:$PATH"
+export PATH="$(npm get prefix)/bin/:$PATH"
 
 # Configuration for Node Version Manager (NVM)
 export NVM_DIR="$HOME/.nvm"
