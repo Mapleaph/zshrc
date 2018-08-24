@@ -8,7 +8,8 @@ export ZSH=/Users/wukai/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="jovial"
+#ZSH_THEME="jovial"
+ZSH_THEME="random"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -96,6 +97,7 @@ alias make='make -w'
 
 alias hp='export http_proxy=http://127.0.0.1:8888;export https_proxy=http://127.0.0.1:8888'
 alias sp='export http_proxy=socks5://127.0.0.1:8887;export https_proxy=socks5://127.0.0.1:8887'
+alias v2='export http_proxy=socks5://127.0.0.1:8886;export https_proxy=socks5://127.0.0.1:8886'
 alias dp='unset http_proxy; unset https_proxy'
 
 alias upgradebrew='brew update; brew upgrade'
@@ -151,4 +153,9 @@ export PATH=$PATH:$(brew --prefix go)/libexec/bin
 # tomcat
 CATALINA_HOME="$(brew --prefix tomcat)/libexec"
 CATALINA_BASE=$CATALINA_HOME
+
+# for jhbuild
+MIN_PATH=/usr/bin:/bin:/usr/sbin:/sbin
+alias GTK_PATH="export PATH=$HOME/gtk/inst/bin:$MIN_PATH"
+alias LOCAL_PATH="export PATH=/System/Library/Frameworks/Python.framework/Versions/Current/bin:$MIN_PATH"
 
