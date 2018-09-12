@@ -11,6 +11,12 @@ export ZSH=/Users/wukai/.oh-my-zsh
 #ZSH_THEME="jovial"
 ZSH_THEME="random"
 
+# zsh-completion
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+# autojump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -105,6 +111,8 @@ alias upgradebrew='brew update; brew upgrade'
 alias upgradebrewcask="brew cask outdated | awk '{print $1}' | xargs brew cask install --force"
 
 alias emacs="$(brew --prefix emacs)/Emacs.app/Contents/MacOS/Emacs -nw"
+
+alias pullallsubmodules="git submodule foreach git pull origin master"
 
 #eval "$(thefuck --alias)"
 
