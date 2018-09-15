@@ -9,7 +9,8 @@ export ZSH=/Users/wukai/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="jovial"
-ZSH_THEME="random"
+ZSH_THEME="spaceship"
+#ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # zsh-completion
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -114,6 +115,7 @@ alias emacs="$(brew --prefix emacs)/Emacs.app/Contents/MacOS/Emacs -nw"
 
 alias pullallsubmodules="git submodule foreach git pull origin master"
 
+alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color'
 #eval "$(thefuck --alias)"
 
 # disable ip address check to avoid timeout
@@ -167,3 +169,8 @@ MIN_PATH=/usr/bin:/bin:/usr/sbin:/sbin
 alias GTK_PATH="export PATH=$HOME/gtk/inst/bin:$MIN_PATH"
 alias LOCAL_PATH="export PATH=/System/Library/Frameworks/Python.framework/Versions/Current/bin:$MIN_PATH"
 
+# Configuration for spaceship theme
+SPACESHIP_TIME_SHOW=true
+
+# Configuration for powerlevel9k
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
