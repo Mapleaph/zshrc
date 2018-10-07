@@ -9,10 +9,11 @@ export ZSH=/Users/wukai/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="jovial"
-ZSH_THEME="spaceship"
+ZSH_THEME="spaceship-prompt/spaceship"
 #ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # zsh-completion
+# manually installation
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # autojump
