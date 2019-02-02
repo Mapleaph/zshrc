@@ -108,15 +108,20 @@ alias sp='export http_proxy=socks5://127.0.0.1:8887;export https_proxy=socks5://
 alias v2='export http_proxy=socks5://127.0.0.1:8886;export https_proxy=socks5://127.0.0.1:8886'
 alias dp='unset http_proxy; unset https_proxy'
 
-alias upgradebrew='brew update; brew upgrade'
+alias upgradebrew='hp && brew update && brew upgrade && dp'
 # this command should be disabled, you can upgrade applications when you open it, this is more safe.
-alias upgradebrewcask="brew cask outdated | awk '{print $1}' | xargs brew cask install --force"
+#alias upgradebrewcask="brew cask outdated | awk '{print $1}' | xargs brew cask install --force"
+
+#alias upgradebrews="upgradebrew;upgradebrewcask;brew cleanup"
 
 alias emacs="$(brew --prefix emacs)/Emacs.app/Contents/MacOS/Emacs -nw"
 
 alias pullallsubmodules="git submodule foreach git pull origin master"
 
 alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color'
+
+alias smi='git submodule update --init --recursive && git submodule foreach git pull origin master'
+
 #eval "$(thefuck --alias)"
 
 # disable ip address check to avoid timeout
@@ -175,3 +180,5 @@ SPACESHIP_TIME_SHOW=true
 
 # Configuration for powerlevel9k
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+
+source ~/perl5/perlbrew/etc/bashrc
