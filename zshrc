@@ -122,6 +122,9 @@ alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color'
 
 alias smi='git submodule update --init --recursive && git submodule foreach git pull origin master'
 
+alias graph1='git log --all --decorate --oneline --graph'
+alias graph='git log --all --decorate --graph'
+
 #eval "$(thefuck --alias)"
 
 # disable ip address check to avoid timeout
