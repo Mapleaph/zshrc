@@ -72,7 +72,7 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -104,11 +104,12 @@ alias tail='tail -f'
 alias make='make -w'
 
 alias hp='export http_proxy=http://127.0.0.1:8888;export https_proxy=http://127.0.0.1:8888'
+alias hpl='export http_proxy=http://127.0.0.1:31210;export https_proxy=http://127.0.0.1:31210'
 alias sp='export http_proxy=socks5://127.0.0.1:8887;export https_proxy=socks5://127.0.0.1:8887'
 alias v2='export http_proxy=socks5://127.0.0.1:8886;export https_proxy=socks5://127.0.0.1:8886'
 alias dp='unset http_proxy; unset https_proxy'
 
-alias upgradebrew='hp && brew update && brew upgrade && dp'
+alias upgradebrew='brew update && brew upgrade'
 # this command should be disabled, you can upgrade applications when you open it, this is more safe.
 #alias upgradebrewcask="brew cask outdated | awk '{print $1}' | xargs brew cask install --force"
 
@@ -177,6 +178,7 @@ CATALINA_BASE=$CATALINA_HOME
 MIN_PATH=/usr/bin:/bin:/usr/sbin:/sbin
 alias GTK_PATH="export PATH=$HOME/gtk/inst/bin:$MIN_PATH"
 alias LOCAL_PATH="export PATH=/System/Library/Frameworks/Python.framework/Versions/Current/bin:$MIN_PATH"
+alias nsqlite3="/usr/local/opt/sqlite/bin/sqlite3"
 
 # Configuration for spaceship theme
 SPACESHIP_TIME_SHOW=true
@@ -185,3 +187,14 @@ SPACESHIP_TIME_SHOW=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
 
 source ~/perl5/perlbrew/etc/bashrc
+
+# hstr added
+alias hh=hstr
+export HISTFILE=~/.zsh_history
+export HSTR_CONFIG=hicolor
+bindkey -s "\C-r" "\eqhstr --\n"
+
+# dhcp server
+alias dhcpd_start="sudo /bin/launchctl load -w /System/Library/LaunchDaemons/bootps.plist"
+alias dhcpd_stop="sudo /bin/launchctl unload -w /System/Library/LaunchDaemons/bootps.plist"
+
