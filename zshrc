@@ -14,7 +14,13 @@ ZSH_THEME="spaceship-prompt/spaceship"
 
 # zsh-completion
 # manually installation
-fpath=(/usr/local/share/zsh-completions $fpath)
+#fpath=(/usr/local/share/zsh-completions $fpath)
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+    autoload -Uz compinit
+    compinit
+fi
 
 # autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
@@ -107,13 +113,14 @@ alias hp='export http_proxy=http://127.0.0.1:8888;export https_proxy=http://127.
 alias hpl='export http_proxy=http://127.0.0.1:31210;export https_proxy=http://127.0.0.1:31210'
 alias sp='export http_proxy=socks5://127.0.0.1:8887;export https_proxy=socks5://127.0.0.1:8887'
 alias v2='export http_proxy=socks5://127.0.0.1:8886;export https_proxy=socks5://127.0.0.1:8886'
+alias cfm='export http_proxy=http://127.0.0.1:7890;export https_proxy=http://127.0.0.1:7890'
+alias sfm='export http_proxy=http://127.0.0.1:6152;export https_proxy=http://127.0.0.1:6152'
 alias dp='unset http_proxy; unset https_proxy'
 
 alias upgradebrew='brew update && brew upgrade'
 # this command should be disabled, you can upgrade applications when you open it, this is more safe.
-#alias upgradebrewcask="brew cask outdated | awk '{print $1}' | xargs brew cask install --force"
-
-#alias upgradebrews="upgradebrew;upgradebrewcask;brew cleanup"
+alias upgradebrewcask="brew outdated --cask | awk '{print $1}' | xargs brew cask install --force"
+alias upgradebrews="upgradebrew;upgradebrewcask;brew cleanup"
 
 alias emacs="$(brew --prefix emacs)/Emacs.app/Contents/MacOS/Emacs -nw"
 
@@ -126,12 +133,15 @@ alias smi='git submodule update --init --recursive && git submodule foreach git 
 alias graph1='git log --all --decorate --oneline --graph'
 alias graph='git log --all --decorate --graph'
 
-#eval "$(thefuck --alias)"
 
-# disable ip address check to avoid timeout
-archey -o
+
+alias porten='export PATH=/opt/local/bin:$PATH'
+alias brewen='export PATH=/usr/local/bin:$PATH'
+
+alias docker_rm_all_containers="docker ps -a | awk '{if(NR>1)print $1}' | xargs -n 1 docker container rm $1"
 
 # PATH for /usr/local/bin
+export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -139,8 +149,9 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # PATH config for locally installed pip packages
 #export PATH="$HOME/Library/Python/2.7/bin/:$PATH"
-export PATH="$HOME/Library/Python/3.7/bin/:$PATH"
-#export PATH="$HOME/.local/bin/:$PATH"
+#export PATH="$HOME/Library/Python/3.8/bin/:$PATH"
+export PATH="$HOME/Library/Python/3.7/bin:$PATH"
+export PATH="$HOME/.local/bin/:$PATH"
 
 # Configuration for Node Version Manager (NVM)
 export NVM_DIR="$HOME/.nvm"
@@ -165,20 +176,20 @@ eval "$(pyenv init -)"
 export HOMEBREW_NO_GITHUB_API=1
 
 # import vmware's command line control commands
-export PATH="$PATH:/Applications/VMware\ Fusion.app/Contents/Library"
+#export PATH="$PATH:/Applications/VMware\ Fusion.app/Contents/Library"
 
 # go
-export PATH=$PATH:$(brew --prefix go)/libexec/bin
+#export PATH=$PATH:$(brew --prefix go)/libexec/bin
 
 # tomcat
-CATALINA_HOME="$(brew --prefix tomcat)/libexec"
-CATALINA_BASE=$CATALINA_HOME
+#CATALINA_HOME="$(brew --prefix tomcat)/libexec"
+#CATALINA_BASE=$CATALINA_HOME
 
 # for jhbuild
-MIN_PATH=/usr/bin:/bin:/usr/sbin:/sbin
-alias GTK_PATH="export PATH=$HOME/gtk/inst/bin:$MIN_PATH"
-alias LOCAL_PATH="export PATH=/System/Library/Frameworks/Python.framework/Versions/Current/bin:$MIN_PATH"
-alias nsqlite3="/usr/local/opt/sqlite/bin/sqlite3"
+#MIN_PATH=/usr/bin:/bin:/usr/sbin:/sbin
+#alias GTK_PATH="export PATH=$HOME/gtk/inst/bin:$MIN_PATH"
+#alias LOCAL_PATH="export PATH=/System/Library/Frameworks/Python.framework/Versions/Current/bin:$MIN_PATH"
+#alias nsqlite3="/usr/local/opt/sqlite/bin/sqlite3"
 
 # Configuration for spaceship theme
 SPACESHIP_TIME_SHOW=true
@@ -198,3 +209,4 @@ bindkey -s "\C-r" "\eqhstr --\n"
 alias dhcpd_start="sudo /bin/launchctl load -w /System/Library/LaunchDaemons/bootps.plist"
 alias dhcpd_stop="sudo /bin/launchctl unload -w /System/Library/LaunchDaemons/bootps.plist"
 
+source $HOME/.zz/z.sh
