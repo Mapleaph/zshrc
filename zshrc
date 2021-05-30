@@ -67,7 +67,7 @@ export UPDATE_ZSH_DAYS=1
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git common-aliases osx tig)
+plugins=(git common-aliases osx tig zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -134,9 +134,9 @@ alias graph1='git log --all --decorate --oneline --graph'
 alias graph='git log --all --decorate --graph'
 
 
-
+export BREW_PATH=$PATH
 alias porten='export PATH=/opt/local/bin:$PATH'
-alias brewen='export PATH=/usr/local/bin:$PATH'
+alias brewen='export PATH=$BREW_PATH'
 
 alias docker_rm_all_containers="docker ps -a | awk '{if(NR>1)print $1}' | xargs -n 1 docker container rm $1"
 
@@ -210,3 +210,12 @@ alias dhcpd_start="sudo /bin/launchctl load -w /System/Library/LaunchDaemons/boo
 alias dhcpd_stop="sudo /bin/launchctl unload -w /System/Library/LaunchDaemons/bootps.plist"
 
 source $HOME/.zz/z.sh
+
+# heroku autocomplete setup
+#HEROKU_AC_ZSH_SETUP_PATH=/Users/wukai/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
+alias vim=nvim
+export EDITOR=nvim
+
+alias start_tftp_server="sudo launchctl load -F /System/Library/LaunchDaemons/tftp.plist && sudo launchctl start com.apple.tftpd"
+alias stop_tftp_server="sudo launchctl stop com.apple.tftpd && sudo launchctl unload /System/Library/LaunchDaemons/tftp.plist"
