@@ -67,7 +67,7 @@ export UPDATE_ZSH_DAYS=1
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git common-aliases osx tig zsh-autosuggestions)
+plugins=(git common-aliases macos tig zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -143,6 +143,7 @@ alias docker_rm_all_containers="docker ps -a | awk '{if(NR>1)print $1}' | xargs 
 # PATH for /usr/local/bin
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/Cellar/nano/5.8/bin/:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -159,7 +160,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # PATH config for locally installed npm packages
-export PATH="$(npm get prefix)/bin/:$PATH"
+#export PATH="$(npm get prefix)/bin/:$PATH"
 #
 # PATH config for anaconda
 #export PATH="$HOME/anaconda3/bin/:$PATH"
@@ -170,6 +171,9 @@ export PATH="$(npm get prefix)/bin/:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Configuration for pyenv, make sure this is the last line.
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 #eval "$(pyenv virtualenv-init -)"
 
@@ -209,7 +213,7 @@ bindkey -s "\C-r" "\eqhstr --\n"
 alias dhcpd_start="sudo /bin/launchctl load -w /System/Library/LaunchDaemons/bootps.plist"
 alias dhcpd_stop="sudo /bin/launchctl unload -w /System/Library/LaunchDaemons/bootps.plist"
 
-source $HOME/.zz/z.sh
+#source $HOME/.zz/z.sh
 
 # heroku autocomplete setup
 #HEROKU_AC_ZSH_SETUP_PATH=/Users/wukai/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
@@ -219,3 +223,11 @@ export EDITOR=nvim
 
 alias start_tftp_server="sudo launchctl load -F /System/Library/LaunchDaemons/tftp.plist && sudo launchctl start com.apple.tftpd"
 alias stop_tftp_server="sudo launchctl stop com.apple.tftpd && sudo launchctl unload /System/Library/LaunchDaemons/tftp.plist"
+
+PATH="/Users/wukai/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/wukai/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/wukai/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/wukai/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/wukai/perl5"; export PERL_MM_OPT;
+
+alias gktwave=/Applications/gtkwave.app/Contents/Resources/bin/gtkwave
