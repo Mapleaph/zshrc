@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=/opt/homebrew/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/wukai/.oh-my-zsh
@@ -67,12 +67,11 @@ export UPDATE_ZSH_DAYS=1
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git common-aliases macos tig zsh-autosuggestions)
+plugins=(git common-aliases macos tig zsh-autosuggestions z)
 
 source $ZSH/oh-my-zsh.sh
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -103,8 +102,10 @@ export LANG=en_US.UTF-8
 alias zshconfig="vim ~/.zshrc"
 #alias ohmyzsh="emacs -nw ~/.oh-my-zsh"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-alias ll='ls -FGlht'
-alias lla='ls -FGlaht'
+alias ll='exa -l -g --icons'
+alias lla='ll -a'
+#alias ll='ls -FGlht'
+#alias lla='ls -FGlaht'
 alias ls='ls -FG'
 alias tail='tail -f'
 alias make='make -w'
@@ -201,13 +202,13 @@ SPACESHIP_TIME_SHOW=true
 # Configuration for powerlevel9k
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
 
-source ~/perl5/perlbrew/etc/bashrc
+#source ~/perl5/perlbrew/etc/bashrc
 
 # hstr added
-alias hh=hstr
-export HISTFILE=~/.zsh_history
-export HSTR_CONFIG=hicolor
-bindkey -s "\C-r" "\eqhstr --\n"
+#alias hh=hstr
+#export HISTFILE=~/.zsh_history
+#export HSTR_CONFIG=hicolor
+#bindkey -s "\C-r" "\eqhstr --\n"
 
 # dhcp server
 alias dhcpd_start="sudo /bin/launchctl load -w /System/Library/LaunchDaemons/bootps.plist"
@@ -231,3 +232,22 @@ PERL_MB_OPT="--install_base \"/Users/wukai/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/wukai/perl5"; export PERL_MM_OPT;
 
 alias gktwave=/Applications/gtkwave.app/Contents/Resources/bin/gtkwave
+
+export CPATH=/opt/homebrew/include
+export LIBRARY_PATH=/opt/homebrew/lib
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+export PATH="/Applications/Sublime Merge.app/Contents/SharedSupport/bin:$PATH"
+#export LC_ALL=en_US.UTF-8
+#export LANG=en_US.UTF-8
+
+# mcfly
+export MCFLY_RESULTS_SORT=LAST_RUN
+export MCFLY_RESULTS=50
+export MCFLY_FUZZY=2
+if [[ "$(defaults read -g AppleInterfaceStyle 2&>/dev/null)" != "Dark" ]]; then
+    export MCFLY_LIGHT=TRUE
+fi
+
+source $HOME/.cargo/env
+eval "$(starship init zsh)"
+eval "$(mcfly init zsh)"
